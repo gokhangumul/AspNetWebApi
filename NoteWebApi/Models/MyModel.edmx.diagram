@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="237af77098274b0ea6d387692fbe1e26" Name="Diagram1">
+        <EntityTypeShape EntityType="MynoteDBModel.CATEGOR" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.FILE" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.FRIEND" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.IMAGE" Width="1.5" PointX="7.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.NOTE" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.PUBLICATION" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.PUBLICATIONSCOMMENT" Width="1.5" PointX="8.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.SHARE" Width="1.5" PointX="10.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.SYSTEMCATEGOR" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MynoteDBModel.USER" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="MynoteDBModel.FK_CATEGORS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_NOTES_CATEGORS1" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_FILES_PUBLICATIONS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_FILES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_FRIENDS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_FRIENDS_USERS1" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_IMAGES_NOTES" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_IMAGES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_NOTES_SYSTEMCATEGOR" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_NOTES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_NOTES_USERS1" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_SHARES_NOTES" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_PUBLICATIONS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_PUBLICATIONSCOMMENTS_PUBLICATIONS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_PUBLICATIONSCOMMENTS_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_SHARES_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="MynoteDBModel.FK_SHARES_USERS1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

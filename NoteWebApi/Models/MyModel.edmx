@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MynoteDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="int" Nullable="false" />
+          <Property Name="Seflink" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublishId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FRIENDS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToUserId" Type="int" Nullable="false" />
+          <Property Name="FromUserId" Type="int" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="NotId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NOTES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoteTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NoteDescription" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NoteContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NoteCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="NoteModifiedDate" Type="datetime" />
+          <Property Name="NoteModifiedId" Type="int" />
+          <Property Name="NoteCategoryId" Type="int" />
+          <Property Name="NoteUserId" Type="int" Nullable="false" />
+          <Property Name="NoteSefLink" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="isActive" Type="int" Nullable="false" />
+          <Property Name="privateNoteCategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="PUBLICATIONS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PubTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PubContent" Type="varchar(max)" Nullable="false" />
+          <Property Name="PubUserId" Type="int" Nullable="false" />
+          <Property Name="PubCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="PubModifiedDate" Type="datetime" />
+          <Property Name="PubSefLink" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="isActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PUBLICATIONSCOMMENTS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentContent" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="CommentUserId" Type="int" Nullable="false" />
+          <Property Name="CommnetPubId" Type="int" Nullable="false" />
+          <Property Name="CommentDate" Type="datetime" Nullable="false" />
+          <Property Name="isActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SHARES">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ToUserId" />
+            <PropertyRef Name="FromUserıd" />
+            <PropertyRef Name="NotId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToUserId" Type="int" Nullable="false" />
+          <Property Name="FromUserıd" Type="int" Nullable="false" />
+          <Property Name="NotId" Type="int" Nullable="false" />
+          <Property Name="Share_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SYSTEMCATEGOR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Hash" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="300" />
+          <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CATEGORS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="CATEGORS" Type="Self.CATEGORS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CATEGORS">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILES_PUBLICATIONS">
+          <End Role="PUBLICATIONS" Type="Self.PUBLICATIONS" Multiplicity="1" />
+          <End Role="FILES" Type="Self.FILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUBLICATIONS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FILES">
+              <PropertyRef Name="PublishId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILES_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="FILES" Type="Self.FILES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FILES">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FRIENDS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="FRIENDS" Type="Self.FRIENDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FRIENDS">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FRIENDS_USERS1">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="FRIENDS" Type="Self.FRIENDS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FRIENDS">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMAGES_NOTES">
+          <End Role="NOTES" Type="Self.NOTES" Multiplicity="1" />
+          <End Role="IMAGES" Type="Self.IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IMAGES">
+              <PropertyRef Name="NotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMAGES_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="IMAGES" Type="Self.IMAGES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IMAGES">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_CATEGORS1">
+          <End Role="CATEGORS" Type="Self.CATEGORS" Multiplicity="0..1" />
+          <End Role="NOTES" Type="Self.NOTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="privateNoteCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_SYSTEMCATEGOR">
+          <End Role="SYSTEMCATEGOR" Type="Self.SYSTEMCATEGOR" Multiplicity="0..1" />
+          <End Role="NOTES" Type="Self.NOTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSTEMCATEGOR">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="NoteCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="NOTES" Type="Self.NOTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="NoteUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_USERS1">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="NOTES" Type="Self.NOTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="NoteModifiedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUBLICATIONS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="PUBLICATIONS" Type="Self.PUBLICATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PUBLICATIONS">
+              <PropertyRef Name="PubUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUBLICATIONSCOMMENTS_PUBLICATIONS">
+          <End Role="PUBLICATIONS" Type="Self.PUBLICATIONS" Multiplicity="1" />
+          <End Role="PUBLICATIONSCOMMENTS" Type="Self.PUBLICATIONSCOMMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUBLICATIONS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PUBLICATIONSCOMMENTS">
+              <PropertyRef Name="CommnetPubId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUBLICATIONSCOMMENTS_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="PUBLICATIONSCOMMENTS" Type="Self.PUBLICATIONSCOMMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PUBLICATIONSCOMMENTS">
+              <PropertyRef Name="CommentUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SHARES_NOTES">
+          <End Role="NOTES" Type="Self.NOTES" Multiplicity="1" />
+          <End Role="SHARES" Type="Self.SHARES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHARES">
+              <PropertyRef Name="NotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SHARES_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="SHARES" Type="Self.SHARES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHARES">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SHARES_USERS1">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="SHARES" Type="Self.SHARES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHARES">
+              <PropertyRef Name="FromUserıd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MynoteDBModelStoreContainer">
+          <EntitySet Name="CATEGORS" EntityType="Self.CATEGORS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FILES" EntityType="Self.FILES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FRIENDS" EntityType="Self.FRIENDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGES" EntityType="Self.IMAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTES" EntityType="Self.NOTES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PUBLICATIONS" EntityType="Self.PUBLICATIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PUBLICATIONSCOMMENTS" EntityType="Self.PUBLICATIONSCOMMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SHARES" EntityType="Self.SHARES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SYSTEMCATEGOR" EntityType="Self.SYSTEMCATEGOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CATEGORS_USERS" Association="Self.FK_CATEGORS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CATEGORS" EntitySet="CATEGORS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILES_PUBLICATIONS" Association="Self.FK_FILES_PUBLICATIONS">
+            <End Role="PUBLICATIONS" EntitySet="PUBLICATIONS" />
+            <End Role="FILES" EntitySet="FILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILES_USERS" Association="Self.FK_FILES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="FILES" EntitySet="FILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FRIENDS_USERS" Association="Self.FK_FRIENDS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="FRIENDS" EntitySet="FRIENDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FRIENDS_USERS1" Association="Self.FK_FRIENDS_USERS1">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="FRIENDS" EntitySet="FRIENDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGES_NOTES" Association="Self.FK_IMAGES_NOTES">
+            <End Role="NOTES" EntitySet="NOTES" />
+            <End Role="IMAGES" EntitySet="IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGES_USERS" Association="Self.FK_IMAGES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="IMAGES" EntitySet="IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_CATEGORS1" Association="Self.FK_NOTES_CATEGORS1">
+            <End Role="CATEGORS" EntitySet="CATEGORS" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_SYSTEMCATEGOR" Association="Self.FK_NOTES_SYSTEMCATEGOR">
+            <End Role="SYSTEMCATEGOR" EntitySet="SYSTEMCATEGOR" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_USERS" Association="Self.FK_NOTES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_USERS1" Association="Self.FK_NOTES_USERS1">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUBLICATIONS_USERS" Association="Self.FK_PUBLICATIONS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PUBLICATIONS" EntitySet="PUBLICATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUBLICATIONSCOMMENTS_PUBLICATIONS" Association="Self.FK_PUBLICATIONSCOMMENTS_PUBLICATIONS">
+            <End Role="PUBLICATIONS" EntitySet="PUBLICATIONS" />
+            <End Role="PUBLICATIONSCOMMENTS" EntitySet="PUBLICATIONSCOMMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUBLICATIONSCOMMENTS_USERS" Association="Self.FK_PUBLICATIONSCOMMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PUBLICATIONSCOMMENTS" EntitySet="PUBLICATIONSCOMMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SHARES_NOTES" Association="Self.FK_SHARES_NOTES">
+            <End Role="NOTES" EntitySet="NOTES" />
+            <End Role="SHARES" EntitySet="SHARES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SHARES_USERS" Association="Self.FK_SHARES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SHARES" EntitySet="SHARES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SHARES_USERS1" Association="Self.FK_SHARES_USERS1">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SHARES" EntitySet="SHARES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MynoteDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGOR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Int32" Nullable="false" />
+          <Property Name="Seflink" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_CATEGORS_USERS" FromRole="CATEGORS" ToRole="USERS" />
+          <NavigationProperty Name="NOTES" Relationship="Self.FK_NOTES_CATEGORS1" FromRole="CATEGORS" ToRole="NOTES" />
+        </EntityType>
+        <EntityType Name="FILE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublishId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FilePath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PUBLICATION" Relationship="Self.FK_FILES_PUBLICATIONS" FromRole="FILES" ToRole="PUBLICATIONS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_FILES_USERS" FromRole="FILES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="FRIEND">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToUserId" Type="Int32" Nullable="false" />
+          <Property Name="FromUserId" Type="Int32" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_FRIENDS_USERS" FromRole="FRIENDS" ToRole="USERS" />
+          <NavigationProperty Name="USER1" Relationship="Self.FK_FRIENDS_USERS1" FromRole="FRIENDS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="IMAGE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NOTE" Relationship="Self.FK_IMAGES_NOTES" FromRole="IMAGES" ToRole="NOTES" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_IMAGES_USERS" FromRole="IMAGES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="NOTE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoteDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoteContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoteCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NoteModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="NoteModifiedId" Type="Int32" />
+          <Property Name="NoteCategoryId" Type="Int32" />
+          <Property Name="NoteUserId" Type="Int32" Nullable="false" />
+          <Property Name="NoteSefLink" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isActive" Type="Int32" Nullable="false" />
+          <Property Name="privateNoteCategoryId" Type="Int32" />
+          <NavigationProperty Name="CATEGOR" Relationship="Self.FK_NOTES_CATEGORS1" FromRole="NOTES" ToRole="CATEGORS" />
+          <NavigationProperty Name="IMAGES" Relationship="Self.FK_IMAGES_NOTES" FromRole="NOTES" ToRole="IMAGES" />
+          <NavigationProperty Name="SYSTEMCATEGOR" Relationship="Self.FK_NOTES_SYSTEMCATEGOR" FromRole="NOTES" ToRole="SYSTEMCATEGOR" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_NOTES_USERS" FromRole="NOTES" ToRole="USERS" />
+          <NavigationProperty Name="USER1" Relationship="Self.FK_NOTES_USERS1" FromRole="NOTES" ToRole="USERS" />
+          <NavigationProperty Name="SHARES" Relationship="Self.FK_SHARES_NOTES" FromRole="NOTES" ToRole="SHARES" />
+        </EntityType>
+        <EntityType Name="PUBLICATION">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PubContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PubUserId" Type="Int32" Nullable="false" />
+          <Property Name="PubCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PubModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="PubSefLink" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isActive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FILES" Relationship="Self.FK_FILES_PUBLICATIONS" FromRole="PUBLICATIONS" ToRole="FILES" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_PUBLICATIONS_USERS" FromRole="PUBLICATIONS" ToRole="USERS" />
+          <NavigationProperty Name="PUBLICATIONSCOMMENTS" Relationship="Self.FK_PUBLICATIONSCOMMENTS_PUBLICATIONS" FromRole="PUBLICATIONS" ToRole="PUBLICATIONSCOMMENTS" />
+        </EntityType>
+        <EntityType Name="PUBLICATIONSCOMMENT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentContent" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentUserId" Type="Int32" Nullable="false" />
+          <Property Name="CommnetPubId" Type="Int32" Nullable="false" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isActive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PUBLICATION" Relationship="Self.FK_PUBLICATIONSCOMMENTS_PUBLICATIONS" FromRole="PUBLICATIONSCOMMENTS" ToRole="PUBLICATIONS" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_PUBLICATIONSCOMMENTS_USERS" FromRole="PUBLICATIONSCOMMENTS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="SHARE">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ToUserId" />
+            <PropertyRef Name="FromUserıd" />
+            <PropertyRef Name="NotId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToUserId" Type="Int32" Nullable="false" />
+          <Property Name="FromUserıd" Type="Int32" Nullable="false" />
+          <Property Name="NotId" Type="Int32" Nullable="false" />
+          <Property Name="Share_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NOTE" Relationship="Self.FK_SHARES_NOTES" FromRole="SHARES" ToRole="NOTES" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_SHARES_USERS" FromRole="SHARES" ToRole="USERS" />
+          <NavigationProperty Name="USER1" Relationship="Self.FK_SHARES_USERS1" FromRole="SHARES" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="SYSTEMCATEGOR">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NOTES" Relationship="Self.FK_NOTES_SYSTEMCATEGOR" FromRole="SYSTEMCATEGOR" ToRole="NOTES" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserImage" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CATEGORS" Relationship="Self.FK_CATEGORS_USERS" FromRole="USERS" ToRole="CATEGORS" />
+          <NavigationProperty Name="FILES" Relationship="Self.FK_FILES_USERS" FromRole="USERS" ToRole="FILES" />
+          <NavigationProperty Name="FRIENDS" Relationship="Self.FK_FRIENDS_USERS" FromRole="USERS" ToRole="FRIENDS" />
+          <NavigationProperty Name="FRIENDS1" Relationship="Self.FK_FRIENDS_USERS1" FromRole="USERS" ToRole="FRIENDS" />
+          <NavigationProperty Name="IMAGES" Relationship="Self.FK_IMAGES_USERS" FromRole="USERS" ToRole="IMAGES" />
+          <NavigationProperty Name="NOTES" Relationship="Self.FK_NOTES_USERS" FromRole="USERS" ToRole="NOTES" />
+          <NavigationProperty Name="NOTES1" Relationship="Self.FK_NOTES_USERS1" FromRole="USERS" ToRole="NOTES" />
+          <NavigationProperty Name="PUBLICATIONS" Relationship="Self.FK_PUBLICATIONS_USERS" FromRole="USERS" ToRole="PUBLICATIONS" />
+          <NavigationProperty Name="PUBLICATIONSCOMMENTS" Relationship="Self.FK_PUBLICATIONSCOMMENTS_USERS" FromRole="USERS" ToRole="PUBLICATIONSCOMMENTS" />
+          <NavigationProperty Name="SHARES" Relationship="Self.FK_SHARES_USERS" FromRole="USERS" ToRole="SHARES" />
+          <NavigationProperty Name="SHARES1" Relationship="Self.FK_SHARES_USERS1" FromRole="USERS" ToRole="SHARES" />
+        </EntityType>
+        <Association Name="FK_CATEGORS_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="CATEGORS" Type="Self.CATEGOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CATEGORS">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_CATEGORS1">
+          <End Role="CATEGORS" Type="Self.CATEGOR" Multiplicity="0..1" />
+          <End Role="NOTES" Type="Self.NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="privateNoteCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILES_PUBLICATIONS">
+          <End Role="PUBLICATIONS" Type="Self.PUBLICATION" Multiplicity="1" />
+          <End Role="FILES" Type="Self.FILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUBLICATIONS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FILES">
+              <PropertyRef Name="PublishId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILES_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="FILES" Type="Self.FILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FILES">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FRIENDS_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="FRIENDS" Type="Self.FRIEND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FRIENDS">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FRIENDS_USERS1">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="FRIENDS" Type="Self.FRIEND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FRIENDS">
+              <PropertyRef Name="FromUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMAGES_NOTES">
+          <End Role="NOTES" Type="Self.NOTE" Multiplicity="1" />
+          <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IMAGES">
+              <PropertyRef Name="NotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMAGES_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="IMAGES" Type="Self.IMAGE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IMAGES">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_SYSTEMCATEGOR">
+          <End Role="SYSTEMCATEGOR" Type="Self.SYSTEMCATEGOR" Multiplicity="0..1" />
+          <End Role="NOTES" Type="Self.NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SYSTEMCATEGOR">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="NoteCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="NOTES" Type="Self.NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="NoteUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTES_USERS1">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="NOTES" Type="Self.NOTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTES">
+              <PropertyRef Name="NoteModifiedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SHARES_NOTES">
+          <End Role="NOTES" Type="Self.NOTE" Multiplicity="1" />
+          <End Role="SHARES" Type="Self.SHARE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NOTES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHARES">
+              <PropertyRef Name="NotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUBLICATIONS_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="PUBLICATIONS" Type="Self.PUBLICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PUBLICATIONS">
+              <PropertyRef Name="PubUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUBLICATIONSCOMMENTS_PUBLICATIONS">
+          <End Role="PUBLICATIONS" Type="Self.PUBLICATION" Multiplicity="1" />
+          <End Role="PUBLICATIONSCOMMENTS" Type="Self.PUBLICATIONSCOMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUBLICATIONS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PUBLICATIONSCOMMENTS">
+              <PropertyRef Name="CommnetPubId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PUBLICATIONSCOMMENTS_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="PUBLICATIONSCOMMENTS" Type="Self.PUBLICATIONSCOMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PUBLICATIONSCOMMENTS">
+              <PropertyRef Name="CommentUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SHARES_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="SHARES" Type="Self.SHARE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHARES">
+              <PropertyRef Name="ToUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SHARES_USERS1">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="SHARES" Type="Self.SHARE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHARES">
+              <PropertyRef Name="FromUserıd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MynoteDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORS" EntityType="Self.CATEGOR" />
+          <EntitySet Name="FILES" EntityType="Self.FILE" />
+          <EntitySet Name="FRIENDS" EntityType="Self.FRIEND" />
+          <EntitySet Name="IMAGES" EntityType="Self.IMAGE" />
+          <EntitySet Name="NOTES" EntityType="Self.NOTE" />
+          <EntitySet Name="PUBLICATIONS" EntityType="Self.PUBLICATION" />
+          <EntitySet Name="PUBLICATIONSCOMMENTS" EntityType="Self.PUBLICATIONSCOMMENT" />
+          <EntitySet Name="SHARES" EntityType="Self.SHARE" />
+          <EntitySet Name="SYSTEMCATEGORs" EntityType="Self.SYSTEMCATEGOR" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK_CATEGORS_USERS" Association="Self.FK_CATEGORS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="CATEGORS" EntitySet="CATEGORS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_CATEGORS1" Association="Self.FK_NOTES_CATEGORS1">
+            <End Role="CATEGORS" EntitySet="CATEGORS" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILES_PUBLICATIONS" Association="Self.FK_FILES_PUBLICATIONS">
+            <End Role="PUBLICATIONS" EntitySet="PUBLICATIONS" />
+            <End Role="FILES" EntitySet="FILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILES_USERS" Association="Self.FK_FILES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="FILES" EntitySet="FILES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FRIENDS_USERS" Association="Self.FK_FRIENDS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="FRIENDS" EntitySet="FRIENDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FRIENDS_USERS1" Association="Self.FK_FRIENDS_USERS1">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="FRIENDS" EntitySet="FRIENDS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGES_NOTES" Association="Self.FK_IMAGES_NOTES">
+            <End Role="NOTES" EntitySet="NOTES" />
+            <End Role="IMAGES" EntitySet="IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMAGES_USERS" Association="Self.FK_IMAGES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="IMAGES" EntitySet="IMAGES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_SYSTEMCATEGOR" Association="Self.FK_NOTES_SYSTEMCATEGOR">
+            <End Role="SYSTEMCATEGOR" EntitySet="SYSTEMCATEGORs" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_USERS" Association="Self.FK_NOTES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTES_USERS1" Association="Self.FK_NOTES_USERS1">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="NOTES" EntitySet="NOTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SHARES_NOTES" Association="Self.FK_SHARES_NOTES">
+            <End Role="NOTES" EntitySet="NOTES" />
+            <End Role="SHARES" EntitySet="SHARES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUBLICATIONS_USERS" Association="Self.FK_PUBLICATIONS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PUBLICATIONS" EntitySet="PUBLICATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUBLICATIONSCOMMENTS_PUBLICATIONS" Association="Self.FK_PUBLICATIONSCOMMENTS_PUBLICATIONS">
+            <End Role="PUBLICATIONS" EntitySet="PUBLICATIONS" />
+            <End Role="PUBLICATIONSCOMMENTS" EntitySet="PUBLICATIONSCOMMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PUBLICATIONSCOMMENTS_USERS" Association="Self.FK_PUBLICATIONSCOMMENTS_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PUBLICATIONSCOMMENTS" EntitySet="PUBLICATIONSCOMMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SHARES_USERS" Association="Self.FK_SHARES_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SHARES" EntitySet="SHARES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SHARES_USERS1" Association="Self.FK_SHARES_USERS1">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SHARES" EntitySet="SHARES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MynoteDBModelStoreContainer" CdmEntityContainer="MynoteDBEntities">
+          <EntitySetMapping Name="CATEGORS">
+            <EntityTypeMapping TypeName="MynoteDBModel.CATEGOR">
+              <MappingFragment StoreEntitySet="CATEGORS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Seflink" ColumnName="Seflink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILES">
+            <EntityTypeMapping TypeName="MynoteDBModel.FILE">
+              <MappingFragment StoreEntitySet="FILES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PublishId" ColumnName="PublishId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FRIENDS">
+            <EntityTypeMapping TypeName="MynoteDBModel.FRIEND">
+              <MappingFragment StoreEntitySet="FRIENDS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserId" ColumnName="FromUserId" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGES">
+            <EntityTypeMapping TypeName="MynoteDBModel.IMAGE">
+              <MappingFragment StoreEntitySet="IMAGES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NotId" ColumnName="NotId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTES">
+            <EntityTypeMapping TypeName="MynoteDBModel.NOTE">
+              <MappingFragment StoreEntitySet="NOTES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NoteTitle" ColumnName="NoteTitle" />
+                <ScalarProperty Name="NoteDescription" ColumnName="NoteDescription" />
+                <ScalarProperty Name="NoteContent" ColumnName="NoteContent" />
+                <ScalarProperty Name="NoteCreatedDate" ColumnName="NoteCreatedDate" />
+                <ScalarProperty Name="NoteModifiedDate" ColumnName="NoteModifiedDate" />
+                <ScalarProperty Name="NoteModifiedId" ColumnName="NoteModifiedId" />
+                <ScalarProperty Name="NoteCategoryId" ColumnName="NoteCategoryId" />
+                <ScalarProperty Name="NoteUserId" ColumnName="NoteUserId" />
+                <ScalarProperty Name="NoteSefLink" ColumnName="NoteSefLink" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="privateNoteCategoryId" ColumnName="privateNoteCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUBLICATIONS">
+            <EntityTypeMapping TypeName="MynoteDBModel.PUBLICATION">
+              <MappingFragment StoreEntitySet="PUBLICATIONS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PubTitle" ColumnName="PubTitle" />
+                <ScalarProperty Name="PubContent" ColumnName="PubContent" />
+                <ScalarProperty Name="PubUserId" ColumnName="PubUserId" />
+                <ScalarProperty Name="PubCreatedDate" ColumnName="PubCreatedDate" />
+                <ScalarProperty Name="PubModifiedDate" ColumnName="PubModifiedDate" />
+                <ScalarProperty Name="PubSefLink" ColumnName="PubSefLink" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PUBLICATIONSCOMMENTS">
+            <EntityTypeMapping TypeName="MynoteDBModel.PUBLICATIONSCOMMENT">
+              <MappingFragment StoreEntitySet="PUBLICATIONSCOMMENTS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
+                <ScalarProperty Name="CommentUserId" ColumnName="CommentUserId" />
+                <ScalarProperty Name="CommnetPubId" ColumnName="CommnetPubId" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHARES">
+            <EntityTypeMapping TypeName="MynoteDBModel.SHARE">
+              <MappingFragment StoreEntitySet="SHARES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ToUserId" ColumnName="ToUserId" />
+                <ScalarProperty Name="FromUserıd" ColumnName="FromUserıd" />
+                <ScalarProperty Name="NotId" ColumnName="NotId" />
+                <ScalarProperty Name="Share_CreatedDate" ColumnName="Share_CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SYSTEMCATEGORs">
+            <EntityTypeMapping TypeName="MynoteDBModel.SYSTEMCATEGOR">
+              <MappingFragment StoreEntitySet="SYSTEMCATEGOR">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="MynoteDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
